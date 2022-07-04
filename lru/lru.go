@@ -30,13 +30,13 @@ func New(maxBytes int64, onEvicted func(string, Value)) *Cache {
 }
 
 func (c *Cache) Get(key string) (value Value, ok bool) {
-	// hit cache, move front
+	// hit geecache, move front
 	if ele, ok := c.cache[key]; ok {
 		c.doublyLinkedList.MoveToFront(ele)
 		kv := ele.Value.(*entry)
 		return kv.value, true
 	}
-	// miss cache
+	// miss geecache
 	return
 }
 
@@ -70,7 +70,7 @@ func (c *Cache) Add(key string, value Value) {
 	}
 }
 
-// Len the number of cache entries
+// Len the number of geecache entries
 func (c *Cache) Len() int {
 	return c.doublyLinkedList.Len()
 }
